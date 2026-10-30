@@ -19,7 +19,6 @@ This version does **not** use the old `picamera` package.
 - SQLite event history
 - Automatic motion snapshots in `captures/`
 - Local Wi-Fi/LAN access only
-- Buzzer intentionally disabled until its electrical rating and driver circuit are confirmed
 
 ## Install on Raspberry Pi OS / Debian Trixie
 
