@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Security | Raspberry Pi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+  <div class="brand-mark">⌁</div>
+  <div><h1>SMART SECURITY</h1><p>Raspberry Pi Intrusion Detection System</p></div>
+  <span id="system-status" class="badge badge-green">CONNECTING</span>
+</header>
+<main class="container">
+  <section class="status-grid">
+    <article class="card status-card"><span class="label">CAMERA</span><span id="camera-status" class="badge badge-amber">STARTING</span></article>
+    <article class="card status-card"><span class="label">MOTION</span><span id="motion-status" class="badge badge-green">NORMAL</span></article>
+    <article class="card status-card"><span class="label">ALARM</span><span id="alarm-status" class="badge badge-green">OFF</span></article>
+    <article class="card status-card"><span class="label">MONITORING</span><button id="arm-btn" class="btn btn-arm" type="button">DISARM</button></article>
+  </section>
+
+  <section class="card camera-card">
+    <div class="section-heading"><div><p class="eyebrow">LIVE MONITOR</p><h2>Camera feed</h2></div><span class="live-dot">LIVE</span></div>
+    <div class="camera-stream-wrapper">
+      <img id="camera-stream" src="{{ url_for('video') }}" alt="Live Raspberry Pi camera feed">
+      <div id="camera-error" class="camera-error">Waiting for camera frames… Check the camera cable and Pi camera software if this remains.</div>
+    </div>
+    <p class="hint">Local network stream · Available while this device is on the same Wi-Fi/LAN as the Pi</p>
+  </section>
+
+  <section class="stats-grid">
+    <article class="card stat-card"><span class="label">ALL EVENTS</span><p id="total-events" class="stat-value">0</p></article>
+    <article class="card stat-card"><span class="label">TODAY</span><p id="today-events" class="stat-value">0</p></article>
+    <article class="card stat-card"><span class="label">LAST EVENT</span><p id="last-event" class="stat-value">--:--:--</p></article>
+  </section>
+
+  <section class="card table-card">
+    <div class="section-heading"><div><p class="eyebrow">ACTIVITY LOG</p><h2>Recent events</h2></div><button class="btn btn-secondary" id="refresh-events" type="button">Refresh</button></div>
+    <div class="table-wrapper"><table><thead><tr><th>Time</th><th>Event</th><th>Snapshot</th></tr></thead><tbody id="event-table-body"><tr><td colspan="3" class="placeholder">No events logged yet</td></tr></tbody></table></div>
+  </section>
+  <footer>Smart Security · Raspberry Pi local dashboard</footer>
+</main>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
